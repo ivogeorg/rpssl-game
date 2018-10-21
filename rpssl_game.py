@@ -51,7 +51,7 @@ def choice_result(human_choice, computer_choice):
     # In case of tie, don't increment anyone's score.
 
     # NOTE
-    # A modulo-based solution (see tutorial) will be preferred.
+    # A modulo-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
     # Evaluation will be as follows:
     # 1. Modulo-based solution: 100%
     # 2. Chain-of-if-statements solution: 80%
