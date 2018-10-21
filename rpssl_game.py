@@ -168,7 +168,7 @@ def get_user_input():
     while not valid:
         print('Please, make a choice: ', end='')
         s = input().strip().lower()
-        if len(s) > 1 or s not in 'rpsolq':
+        if len(s) == 0 or len(s) > 1 or s not in 'rpsolq':
             print('Invalid input. Valid inputs are {r, p, s, o, l, q}.')
             continue
         else:
