@@ -18,6 +18,11 @@ def choice_to_number(choice):
     """Convert choice to number."""
 
     # TODO: Implement
+    # NOTE
+    # A dictionary-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
+    # Evaluation will be as follows:
+    # 1. Dictionary-based solution: 100%
+    # 2. Chain-of-if-statements solution: 80%
 
     raise NotImplementedError
 
@@ -26,6 +31,11 @@ def number_to_choice(number):
     """Convert number to choice."""
 
     # TODO: Implement
+    # NOTE
+    # A dictionary-based solution (see Clever Programmer tutorial and assignment README) will be preferred.
+    # Evaluation will be as follows:
+    # 1. Dictionary-based solution: 100%
+    # 2. Chain-of-if-statements solution: 80%
 
     raise NotImplementedError
 
@@ -65,12 +75,16 @@ def test_choice_to_number():
     assert choice_to_number('rock') == 0
     assert choice_to_number('paper') == 1
     assert choice_to_number('scissors') == 2
+    assert choice_to_number('spock') == 3
+    assert choice_to_number('lizard') == 4
 
 
 def test_number_to_choice():
     assert number_to_choice(0) == 'rock'
     assert number_to_choice(1) == 'paper'
     assert number_to_choice(2) == 'scissors'
+    assert number_to_choice(3) == 'spock'
+    assert number_to_choice(4) == 'lizard'
 
 
 def test_computer_choice():
