@@ -104,11 +104,8 @@ def test_all():
     test_computer_choice()
 
 
-# Uncomment to test your functions.
-# test_all()
-
-
 # Code for handling human player moves
+# DO NOT EDIT THESE FUNCTIONS
 def rock():
     global human_choice, computer_choice
     global HUMAN_SCORE, COMPUTER_SCORE
@@ -202,4 +199,7 @@ def play_rps():
 
 # main function
 if __name__ == '__main__':
+    # Uncomment to test your functions.
+    # test_all()
+
     play_rps()
