@@ -1,9 +1,9 @@
 """
+After
 @ Clever Programmer
 Rock paper scissors
 """
 import random
-import simplegui
 
 # Global variables that all functions know about.
 # DO NOT EDIT THESE GLOBAL VARIABLES
@@ -16,22 +16,26 @@ computer_choice = ""
 
 def choice_to_number(choice):
     """Convert choice to number."""
-    # If choice is 'rock', give me 0
-    # If choice is 'paper', give me 1
-    # If choice is 'scissors', give me 2
+
+    # TODO: Implement
+
+    raise NotImplementedError
 
 
 def number_to_choice(number):
     """Convert number to choice."""
-    # If number is 0, give me 'rock'
-    # If number is 1, give me 'paper'
-    # If number is 2, give me 'scissors'
+
+    # TODO: Implement
+
+    raise NotImplementedError
 
 
 def random_computer_choice():
     """Choose randomly for computer."""
 
-    # lookup random.choice()
+    # TODO: Implement (Hint: Look up random.choice())
+
+    raise NotImplementedError
 
 
 def choice_result(human_choice, computer_choice):
@@ -41,13 +45,18 @@ def choice_result(human_choice, computer_choice):
     global COMPUTER_SCORE
     global HUMAN_SCORE
 
-    # based on the given human_choice and computer_choice
+    # TODO: Implement
+    # Based on the given human_choice and computer_choice,
     # determine who won and increment their score by 1.
-    # if tie, then don't increment anyone's score.
+    # In case of tie, don't increment anyone's score.
 
-    # example code
-    # if human_choice == 'rock' and computer_choice == 'paper':
-    #    COMPUTER_SCORE = COMPUTER_SCORE + 1
+    # NOTE
+    # A modulo-based solution (see tutorial) will be preferred.
+    # Evaluation will be as follows:
+    # 1. Modulo-based solution: 100%
+    # 2. Chain-of-if-statements solution: 80%
+
+    raise NotImplementedError
 
 
 # DO NOT REMOVE THESE TEST FUNCTIONS.
@@ -64,17 +73,23 @@ def test_number_to_choice():
     assert number_to_choice(2) == 'scissors'
 
 
+def test_computer_choice():
+    choice = random_computer_choice()
+    assert choice in ['rock', 'paper', 'scissors', 'spock', 'lizard']
+    assert 0 <= choice_to_number(choice) <= 4
+
+
 def test_all():
     test_choice_to_number()
     test_number_to_choice()
+    test_computer_choice()
 
 
 # Uncomment to test your functions.
 # test_all()
 
 
-# Handler for mouse click on rock button.
-# This code is for the GUI part of the game.
+# Code for handling human player moves
 def rock():
     global human_choice, computer_choice
     global HUMAN_SCORE, COMPUTER_SCORE
@@ -93,7 +108,6 @@ def paper():
     choice_result(computer_choice, human_choice)
 
 
-# Handler for mouse click on paper button.
 def scissors():
     global human_choice, computer_choice
     global HUMAN_SCORE, COMPUTER_SCORE
@@ -103,56 +117,66 @@ def scissors():
     choice_result(computer_choice, human_choice)
 
 
-# Handler to draw on canvas
-def draw(canvas):
-    try:
-        # Draw choices
-        canvas.draw_text("You: " + human_choice, [10, 40], 48, "Green")
-        canvas.draw_text("Comp: " + computer_choice, [10, 80], 48, "Red")
+def spock():
+    global human_choice, computer_choice
+    global HUMAN_SCORE, COMPUTER_SCORE
 
-        # Draw scores
-        canvas.draw_text("Human Score: " + str(HUMAN_SCORE), [10, 150], 30, "Green")
-        canvas.draw_text("Comp Score: " + str(COMPUTER_SCORE), [10, 190], 30, "Red")
-
-    except TypeError:
-        pass
+    human_choice = 'spock'
+    choice_result(human_choice, computer_choice)
 
 
-# Create a frame and assign callbacks to event handlers
+def lizard():
+    global human_choice, computer_choice
+    global HUMAN_SCORE, COMPUTER_SCORE
+
+    human_choice = 'lizard'
+    choice_result(human_choice, computer_choice)
+
+
+# Game play functions
+def greet():
+    print('Welcome to the game of RPSSL')
+    print('Commands: (r)ock\n' +
+          '          (p)aper\n' +
+          '          (s)cissors\n' +
+          '          sp(o)ck\n' +
+          '          (l)izard\n' +
+          '          (q)uit\n')
+
+
+def get_user_input():
+    valid = False
+    while not valid:
+        print('Please, make a choice: ', end='')
+        s = input().strip().lower()
+        if len(s) > 1 or s not in 'rpsolq':
+            print('Invalid input. Valid inputs are {r, p, s, o, l, q}.')
+            continue
+        else:
+            return s
+
+
 def play_rps():
-    frame = simplegui.create_frame("Home", 300, 200)
-    frame.add_button("Rock", rock)
-    frame.add_button("Paper", paper)
-    frame.add_button("Scissors", scissors)
-    frame.set_draw_handler(draw)
+    global HUMAN_SCORE, COMPUTER_SCORE
 
-    # Start the frame animation
-    frame.start()
+    moves = {'r': rock,
+             'p': paper,
+             's': scissors,
+             'o': spock,
+             'l': lizard}
+    greet()
+    while True:
+        user_input = get_user_input()
+        if user_input == 'q':
+            print('Final score: Human {} : Computer {}'.format(HUMAN_SCORE, COMPUTER_SCORE))
+            print('Thanks for playing. Good bye!')
+            break
+        else:
+            move = moves.get(user_input)
+            assert move is not None
+            move()
+            print('Score: Human {} : Computer {}'.format(HUMAN_SCORE, COMPUTER_SCORE))
 
 
-play_rps()
-
-"""   
-[0, 1, 2]
-[r, p, s]
-
-rock vs scissors
-(rock - scissors) % 3 == 1
-(0 - 2) % 3 == 1
-(-2) % 3 == 1
-1 == 1
-rock wins
-
-paper vs scissors
-(paper - paper) % 3 == 1
-(1 - 2) % 3 == 1
-2 == 1
-scissor wins
-
-paper vs rocks
-(paper - rocks) % 3 == 1
-(1 - 0) % 3 == 1
-1 % 3 == 1
-1 == 1
-paper wins
-"""
+if __name__ == '__main__':
+    play_rps()
