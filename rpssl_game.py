@@ -49,7 +49,12 @@ def random_computer_choice():
 
 
 def choice_result(human_choice, computer_choice):
-    """Return the result of who wins."""
+    """Return the result of who wins.
+    :param human_choice: A string representing a move. One of
+                         {'rock', 'paper', 'scissors', 'spock', 'lizard'}.
+    :param computer_choice: A string representing a move.
+    :returns None. Modifies globals. Prints out result of last game.
+    """
 
     # DO NOT REMOVE THESE GLOBAL VARIABLE LINES.
     global COMPUTER_SCORE
@@ -148,6 +153,7 @@ def lizard():
 
 
 # Game play functions
+# DO NOT EDIT THESE FUNCTIONS
 def greet():
     print('Welcome to the game of RPSSL')
     print('Commands: (r)ock\n' +
@@ -192,5 +198,6 @@ def play_rps():
             print('Score: Human {} : Computer {}'.format(HUMAN_SCORE, COMPUTER_SCORE))
 
 
+# main function
 if __name__ == '__main__':
     play_rps()
