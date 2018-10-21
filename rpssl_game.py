@@ -48,11 +48,11 @@ def random_computer_choice():
     raise NotImplementedError
 
 
-def choice_result(human_choice, computer_choice):
+def choice_result(human_move, computer_move):
     """Return the result of who wins.
-    :param human_choice: A string representing a move. One of
+    :param human_move: A string representing a move. One of
                          {'rock', 'paper', 'scissors', 'spock', 'lizard'}.
-    :param computer_choice: A string representing a move.
+    :param computer_move: A string representing a move.
     :returns None. Modifies globals. Prints out result of last game.
     """
 
@@ -115,7 +115,7 @@ def rock():
 
     human_choice = 'rock'
     computer_choice = random_computer_choice()
-    choice_result(computer_choice, human_choice)
+    choice_result(human_choice, computer_choice)
 
 
 def paper():
@@ -124,7 +124,7 @@ def paper():
 
     human_choice = 'paper'
     computer_choice = random_computer_choice()
-    choice_result(computer_choice, human_choice)
+    choice_result(human_choice, computer_choice)
 
 
 def scissors():
@@ -133,7 +133,7 @@ def scissors():
 
     human_choice = 'scissors'
     computer_choice = random_computer_choice()
-    choice_result(computer_choice, human_choice)
+    choice_result(human_choice, computer_choice)
 
 
 def spock():
@@ -141,6 +141,7 @@ def spock():
     global HUMAN_SCORE, COMPUTER_SCORE
 
     human_choice = 'spock'
+    computer_choice = random_computer_choice()
     choice_result(human_choice, computer_choice)
 
 
@@ -149,6 +150,7 @@ def lizard():
     global HUMAN_SCORE, COMPUTER_SCORE
 
     human_choice = 'lizard'
+    computer_choice = random_computer_choice()
     choice_result(human_choice, computer_choice)
 
 
