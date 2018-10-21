@@ -46,14 +46,14 @@ You should find these functions, remove the `raise` line, and write your impleme
   3. Checking if a number is in a list of number is straightforward: `3 in [1, 3]`.
   4. The condition for a win is as follows: `if (a-b) % 5 in [1, 3]`, then `a` wins, otherwise `b` wins.
   5. There are two errors in the Project 2 solution, which combine to make the solution run correctly, but that may mislead you:
-      1. The second condition is wrong (see (4) above for the correct one): 
+      1. The second condition in `choice_result()` is wrong (see (4) above for the correct one): 
           ```python
           elif (human_choice_number - computer_choice_number) % 3 == 1:
               print("Computer wins!")
               COMPUTER_SCORE += 1
           ```
  
-      2. The `choice_result()` is defined as having two arguments: `human_choice` and `computer_choice`, in this order, but the calls to this function (e.g. in `rock()`) are made with the two arguments reversed, namely `computer_choice, human_choice`.
+      2. The function `choice_result()` is defined as having two arguments: `human_choice` and `computer_choice`, in this order, but the calls to this function (e.g. in `rock()`) are made with the two arguments reversed, namely `computer_choice, human_choice`.
   6. The second error has been corrected for you. Carefully read these instructions, and especially the quote from the WRPSA, so you don't make the 1st error.
   
   
